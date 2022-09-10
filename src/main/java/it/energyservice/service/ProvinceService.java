@@ -27,7 +27,7 @@ public class ProvinceService {
 	}
 
 	public Province update(Long id, Province province) {
-		Optional<Province> provinceResult = provinceRepository.findById(province.getId());
+		Optional<Province> provinceResult = provinceRepository.findById(id);
 		log.info("Updating province...");
 
 		if (provinceResult.isPresent()) {
