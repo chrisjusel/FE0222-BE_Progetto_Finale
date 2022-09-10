@@ -3,6 +3,7 @@ package it.energyservice.util;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import it.energyservice.model.Billing;
 import it.energyservice.model.Common;
 import it.energyservice.model.Province;
 import it.energyservice.service.CommonService;
@@ -39,6 +41,7 @@ public class ApplicationStartupRunner implements CommandLineRunner {
 		comune.setProvincia(provincia);
 		
 		commonService.save(comune);
+		
 	}
 
 	private void insertProvinces() {
