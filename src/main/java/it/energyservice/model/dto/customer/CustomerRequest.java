@@ -2,6 +2,7 @@ package it.energyservice.model.dto.customer;
 
 import java.sql.Date;
 
+import it.energyservice.model.CustomerType;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +24,7 @@ public class CustomerRequest {
 	private String nomeContatto;
 	private String cognomeContatto;
 	private String telefonoContatto;
+	private CustomerType tipoCliente;
 
 	private AddressRequest indirizzoSedeOperativa;
 	private AddressRequest indirizzoSedeLegale;

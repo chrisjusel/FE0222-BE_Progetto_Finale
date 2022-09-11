@@ -16,7 +16,7 @@ public class CustomerRequestToCustomer implements Converter<CustomerRequest, Cus
 
 	@Autowired
 	private CommonService commonService;
-	
+
 	@Autowired
 	private AddressRequestToAddress addressConverter;
 
@@ -36,24 +36,12 @@ public class CustomerRequestToCustomer implements Converter<CustomerRequest, Cus
 		target.setRagioneSociale(source.getRagioneSociale());
 		target.setTelefono(source.getTelefono());
 		target.setTelefonoContatto(source.getTelefonoContatto());
+		target.setTipoCliente(source.getTipoCliente());
 
 		target.setIndirizzoSedeLegale(addressConverter.convert(source.getIndirizzoSedeLegale()));
 		target.setIndirizzoSedeOperativa(addressConverter.convert(source.getIndirizzoSedeOperativa()));
 
 		return target;
 	}
-
-//	private Address convertAddress(AddressRequest source) {
-//		Address target = new Address();
-//
-//		target.setId(source.getId());
-//		target.setCap(source.getCap());
-//		target.setCivico(source.getCivico());
-//		target.setLocalita(source.getLocalita());
-//		target.setVia(source.getVia());
-//		target.setComune(commonService.findById(source.getComune()));
-//
-//		return target;
-//	}
 
 }
