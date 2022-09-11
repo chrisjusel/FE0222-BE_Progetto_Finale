@@ -8,6 +8,7 @@ import it.energyservice.model.Address;
 import it.energyservice.model.Customer;
 import it.energyservice.model.dto.customer.AddressRequest;
 import it.energyservice.model.dto.customer.CustomerRequest;
+import it.energyservice.service.AddressService;
 import it.energyservice.service.CommonService;
 
 @Component
@@ -15,6 +16,9 @@ public class CustomerRequestToCustomer implements Converter<CustomerRequest, Cus
 
 	@Autowired
 	private CommonService commonService;
+	
+	@Autowired
+	private AddressRequestToAddress addressConverter;
 
 	@Override
 	public Customer convert(CustomerRequest source) {
@@ -33,22 +37,23 @@ public class CustomerRequestToCustomer implements Converter<CustomerRequest, Cus
 		target.setTelefono(source.getTelefono());
 		target.setTelefonoContatto(source.getTelefonoContatto());
 
-		target.setIndirizzoSedeLegale(convertAddress(source.getIndirizzoSedeLegale()));
-		target.setIndirizzoSedeOperativa(convertAddress(source.getIndirizzoSedeOperativa()));
+		target.setIndirizzoSedeLegale(addressConverter.convert(source.getIndirizzoSedeLegale()));
+		target.setIndirizzoSedeOperativa(addressConverter.convert(source.getIndirizzoSedeOperativa()));
 
 		return target;
 	}
 
-	private Address convertAddress(AddressRequest source) {
-		Address target = new Address();
-
-		target.setCap(source.getCap());
-		target.setCivico(source.getCivico());
-		target.setLocalita(source.getLocalita());
-		target.setVia(source.getVia());
-		target.setComune(commonService.findById(source.getComune()));
-
-		return target;
-	}
+//	private Address convertAddress(AddressRequest source) {
+//		Address target = new Address();
+//
+//		target.setId(source.getId());
+//		target.setCap(source.getCap());
+//		target.setCivico(source.getCivico());
+//		target.setLocalita(source.getLocalita());
+//		target.setVia(source.getVia());
+//		target.setComune(commonService.findById(source.getComune()));
+//
+//		return target;
+//	}
 
 }

@@ -20,13 +20,16 @@ public class CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
 
+	@Autowired
+	AddressService addressService;
+
 	public Customer save(Customer customer) {
 		log.info("Adding new customer...");
 		log.info("New customer '" + customer.getRagioneSociale() + "' addedd");
 		return customerRepository.save(customer);
 	}
 
-	public Customer update(long id, Customer customer) {
+	public Customer update(Long id, Customer customer) {
 		Optional<Customer> customerResult = customerRepository.findById(id);
 		log.info("Updating customer...");
 
@@ -39,8 +42,13 @@ public class CustomerService {
 			customerUpdate.setEmailContatto(customer.getEmailContatto());
 			customerUpdate.setFatturatoAnnuale(customer.getFatturatoAnnuale());
 			customerUpdate.setFatture(customer.getFatture());
-			customerUpdate.setIndirizzoSedeLegale(customer.getIndirizzoSedeLegale());
-			customerUpdate.setIndirizzoSedeOperativa(customer.getIndirizzoSedeOperativa());
+
+			customerUpdate.setIndirizzoSedeLegale(addressService.update(customer.getIndirizzoSedeLegale().getId(),
+					customer.getIndirizzoSedeLegale()));
+			
+			customerUpdate.setIndirizzoSedeOperativa(addressService.update(customer.getIndirizzoSedeOperativa().getId(),
+					customer.getIndirizzoSedeOperativa()));
+			
 			customerUpdate.setNomeContatto(customer.getNomeContatto());
 			customerUpdate.setPartitaIva(customer.getPartitaIva());
 			customerUpdate.setPec(customer.getPec());
@@ -73,7 +81,7 @@ public class CustomerService {
 		} else
 			throw new CustomerNotFoundException("No customers are present with id " + id);
 	}
-	
+
 	public Page<Customer> getAll(Pageable pageable) {
 		log.info("Recovering all provinces...");
 		log.info("All provinces recovered");

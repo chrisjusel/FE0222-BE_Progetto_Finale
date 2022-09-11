@@ -9,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AddressRequest {
 
+	private Long id;
 	private String via;
 	private String civico;
 	private String localita;
