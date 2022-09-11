@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import it.energyservice.exception.BillingNotFoundException;
 import it.energyservice.exception.BillingStateException;
 import it.energyservice.exception.BillingStateNotFoundException;
 import it.energyservice.model.BillingState;
@@ -64,5 +65,18 @@ public class BillingStateService {
 		log.info("Recovering all billing states...");
 		log.info("All billing states recovered");
 		return billingStateRepository.findAll(pageable);
+	}
+
+	public BillingState findByName(String name) {
+		log.info("Recovering billing by name...");
+		Optional<BillingState> billingStateResult = billingStateRepository.findByNome(name);
+
+		if (billingStateResult.isPresent()) {
+			log.info("Billing state '" + billingStateResult.get().getNome() + "' recovered");
+			return billingStateResult.get();
+		} else {
+			throw new BillingNotFoundException("No billing states are present with name " + name);
+		}
+
 	}
 }
