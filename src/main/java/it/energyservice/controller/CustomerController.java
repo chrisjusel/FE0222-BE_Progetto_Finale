@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -67,6 +68,13 @@ public class CustomerController {
 	public ResponseEntity<Page<Customer>> getAll(Pageable pageable) {
 		log.info("New GET request to Province: getAll");
 		Page<Customer> response = customerService.getAll(pageable);
+		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
+	}
+	
+	@GetMapping("/fatturatoannuale")
+	public ResponseEntity<Page<Customer>> findByfatturatoAnnualeBetween(@RequestParam double from, @RequestParam double to, Pageable pageable) {
+		log.info("New GET request to Province: getAll");
+		Page<Customer> response = customerService.findByfatturatoAnnualeBetween(from, to, pageable);
 		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
 	}
 }

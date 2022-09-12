@@ -1,5 +1,6 @@
 package it.energyservice.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,5 +67,17 @@ public class ProvinceService {
 		log.info("Recovering all provinces...");
 		log.info("All provinces recovered");
 		return provinceRepository.findAll(pageable);
+	}
+	
+	public List<Province> findByNome(String nome){
+		return provinceRepository.findByNome(nome);
+	}
+	
+	public Province findProvinceByName(String nome) {
+		if(!findByNome(nome).isEmpty()) {
+			return findByNome(nome).get(0);
+		}else 
+			log.info("Provincia " + nome + " non trovata");
+		return null;
 	}
 }

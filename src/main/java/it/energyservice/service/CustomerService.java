@@ -83,8 +83,14 @@ public class CustomerService {
 	}
 
 	public Page<Customer> getAll(Pageable pageable) {
-		log.info("Recovering all provinces...");
-		log.info("All provinces recovered");
+		log.info("Recovering all customers...");
+		log.info("All customers recovered");
 		return customerRepository.findAll(pageable);
+	}
+	
+	public Page<Customer> findByfatturatoAnnualeBetween(double from, double to, Pageable pageable){
+		log.info("Recovering all customer ...");
+		log.info("All customers recovered");
+		return customerRepository.findByfatturatoAnnualeBetween(from, to, pageable);
 	}
 }

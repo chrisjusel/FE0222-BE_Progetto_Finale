@@ -5,11 +5,11 @@ AN;Ancona;Marche;42
 AO;Aosta;Valle d`Aosta;7
 AQ;L`Aquila;Abruzzo;66
 AR;Arezzo;Toscana;51
-AP;Ascoli-Piceno;Marche;44
+AP;Ascoli Piceno;Marche;44
 AT;Asti;Piemonte;5
 AV;Avellino;Campania;64
 BA;Bari;Puglia;72
-BT;Barletta-Andria-Trani;Puglia;110
+BT;Barletta Andria Trani;Puglia;110
 BL;Belluno;Veneto;25
 BN;Benevento;Campania;62
 BG;Bergamo;Lombardia;16
@@ -36,14 +36,14 @@ FM;Fermo;Marche;109
 FE;Ferrara;Emilia Romagna;38
 FI;Firenze;Toscana;48
 FG;Foggia;Puglia;71
-FC;Forli-Cesena;Emilia Romagna;40
+FC;Forli Cesena;Emilia Romagna;40
 FR;Frosinone;Lazio;60
 GE;Genova;Liguria;10
 GO;Gorizia;Friuli Venezia Giulia;31
 GR;Grosseto;Toscana;53
 IM;Imperia;Liguria;8
 IS;Isernia;Molise;94
-SP;La-Spezia;Liguria;11
+SP;La Spezia;Liguria;11
 LT;Latina;Lazio;89
 LE;Lecce;Puglia;75
 LC;Lecco;Lombardia;97
@@ -52,13 +52,13 @@ LO;Lodi;Lombardia;98
 LU;Lucca;Toscana;46
 MC;Macerata;Marche;43
 MN;Mantova;Lombardia;20
-MS;Massa-Carrara;Toscana;45
+MS;Massa Carrara;Toscana;45
 MT;Matera;Basilicata;77
 VS;Medio Campidano;Sardegna;
 ME;Messina;Sicilia;83
 MI;Milano;Lombardia;15
 MO;Modena;Emilia Romagna;36
-MB;Monza-Brianza;Lombardia;108
+MB;Monza Brianza;Lombardia;108
 NA;Napoli;Campania;63
 NO;Novara;Piemonte;83
 NU;Nuoro;Sardegna;91
@@ -70,7 +70,7 @@ PA;Palermo;Sicilia;82
 PR;Parma;Emilia Romagna;34
 PV;Pavia;Lombardia;18
 PG;Perugia;Umbria;54
-PU;Pesaro-Urbino;Marche;41
+PU;Pesaro Urbino;Marche;41
 PE;Pescara;Abruzzo;68
 PC;Piacenza;Emilia Romagna;33
 PI;Pisa;Toscana;50
@@ -80,8 +80,8 @@ PZ;Potenza;Basilicata;76
 PO;Prato;Toscana;100
 RG;Ragusa;Sicilia;88
 RA;Ravenna;Emilia Romagna;39
-RC;Reggio-Calabria;Calabria;80
-RE;Reggio-Emilia;Emilia Romagna;35
+RC;Reggio Calabria;Calabria;80
+RE;Reggio Emilia;Emilia Romagna;35
 RI;Rieti;Lazio;57
 RN;Rimini;Emilia Romagna;99
 RM;Roma;Lazio;58
@@ -106,6 +106,6 @@ VE;Venezia;Veneto;27
 VB;Verbania;Piemonte;103
 VC;Vercelli;Piemonte;2
 VR;Verona;Veneto;23
-VV;Vibo-Valentia;Calabria;102
+VV;Vibo Valentia;Calabria;102
 VI;Vicenza;Veneto;24
 VT;Viterbo;Lazio;56
