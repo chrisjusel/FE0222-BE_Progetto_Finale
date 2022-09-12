@@ -1,6 +1,6 @@
 package it.energyservice.service;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,5 +99,11 @@ public class CustomerService {
 		log.info("Recovering all customer by annual date between " + from + " and " + to + "...");
 		log.info("All customers recovered");
 		return customerRepository.findByInsertionDateBetween(from, from, pageable);
+	}
+
+	public Page<Customer> findByCompanyNameContains(String substring, Pageable pageable) {
+		log.info("Recovering all customer containing " + substring + "...");
+		log.info("All customers recovered");
+		return customerRepository.findByCompanyNameContains(substring, pageable);
 	}
 }

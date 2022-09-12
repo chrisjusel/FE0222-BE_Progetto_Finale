@@ -1,6 +1,6 @@
 package it.energyservice.repository;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,4 +12,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Long>{
 
 	Page<Customer> findByAnnualTurnoverBetween(double from, double to, Pageable pageable);
 	Page<Customer> findByInsertionDateBetween(Date from, Date to, Pageable pageable);
+	Page<Customer> findByCompanyNameContains(String substring, Pageable pageable);
 }

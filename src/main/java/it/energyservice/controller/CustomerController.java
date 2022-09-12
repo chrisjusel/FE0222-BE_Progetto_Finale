@@ -1,6 +1,6 @@
 package it.energyservice.controller;
 
-import java.sql.Date;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -82,10 +82,18 @@ public class CustomerController {
 
 	@GetMapping("/date")
 	public ResponseEntity<Page<Customer>> findByinsertionDateBetween(
-			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date from,
-			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date to, Pageable pageable) {
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date from,
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date to, Pageable pageable) {
 		log.info("New GET request to Customer: findByAnnualTurnoverBetween");
 		Page<Customer> response = customerService.findByInsertionDateBetween(from, to, pageable);
+		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
+	}
+
+	@GetMapping("/companyname")
+	public ResponseEntity<Page<Customer>> findByCompanyNameContains(@RequestParam String name,
+			Pageable pageable) {
+		log.info("New GET request to Customer: findByCompanyNameContaining");
+		Page<Customer> response = customerService.findByCompanyNameContains(name, pageable);
 		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
 	}
 
