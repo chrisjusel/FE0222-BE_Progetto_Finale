@@ -1,6 +1,8 @@
 package it.energyservice.model.dto.billing;
 
-import java.sql.Date;
+import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import it.energyservice.model.BillingState;
 import lombok.Getter;
@@ -14,7 +16,10 @@ public class BillingResponse {
 
 	private Long id;
 	private int year;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date date;
+	
 	private double amount;
 	private int number;
 	private CustomerResponse customer = new CustomerResponse();

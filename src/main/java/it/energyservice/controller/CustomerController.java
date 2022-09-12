@@ -1,8 +1,11 @@
 package it.energyservice.controller;
 
+import java.sql.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,8 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import it.energyservice.model.Customer;
 import it.energyservice.model.dto.converter.CustomerRequestToCustomer;
@@ -70,11 +71,22 @@ public class CustomerController {
 		Page<Customer> response = customerService.getAll(pageable);
 		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
 	}
-	
-	@GetMapping("/fatturatoannuale")
-	public ResponseEntity<Page<Customer>> findByfatturatoAnnualeBetween(@RequestParam double from, @RequestParam double to, Pageable pageable) {
-		log.info("New GET request to Province: getAll");
+
+	@GetMapping("/annualturnover")
+	public ResponseEntity<Page<Customer>> findByAnnualTurnoverBetween(@RequestParam double from,
+			@RequestParam double to, Pageable pageable) {
+		log.info("New GET request to Customer: findByAnnualTurnoverBetween");
 		Page<Customer> response = customerService.findByfatturatoAnnualeBetween(from, to, pageable);
 		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
 	}
+
+	@GetMapping("/date")
+	public ResponseEntity<Page<Customer>> findByinsertionDateBetween(
+			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date from,
+			@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date to, Pageable pageable) {
+		log.info("New GET request to Customer: findByAnnualTurnoverBetween");
+		Page<Customer> response = customerService.findByInsertionDateBetween(from, to, pageable);
+		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
+	}
+
 }

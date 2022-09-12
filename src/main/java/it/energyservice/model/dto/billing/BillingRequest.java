@@ -1,6 +1,11 @@
 package it.energyservice.model.dto.billing;
 
-import java.sql.Date;
+import java.util.Date;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +18,9 @@ public class BillingRequest {
 
 	private Long id;
 	private int year;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date date;
 	private double amount;
 	private int number;

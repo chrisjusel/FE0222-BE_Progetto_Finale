@@ -1,6 +1,11 @@
 package it.energyservice.model.dto.customer;
 
-import java.sql.Date;
+import java.util.Date;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import it.energyservice.model.CustomerType;
 import lombok.Getter;
@@ -15,8 +20,14 @@ public class CustomerRequest {
 	private String companyName;
 	private String vatNumber;
 	private String email;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date insertionDate;
+
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date lastContactDate;
+
 	private double annualTurnover;
 	private String pec;
 	private String phone;

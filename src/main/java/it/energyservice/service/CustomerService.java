@@ -1,5 +1,6 @@
 package it.energyservice.service;
 
+import java.sql.Date;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,12 +44,12 @@ public class CustomerService {
 			customerUpdate.setAnnualTurnover(customer.getAnnualTurnover());
 			customerUpdate.setBillings(customer.getBillings());
 
-			customerUpdate.setLegalSiteAddress(addressService.update(customer.getLegalSiteAddress().getId(),
-					customer.getLegalSiteAddress()));
-			
+			customerUpdate.setLegalSiteAddress(
+					addressService.update(customer.getLegalSiteAddress().getId(), customer.getLegalSiteAddress()));
+
 			customerUpdate.setOperatingSiteAddress(addressService.update(customer.getOperatingSiteAddress().getId(),
 					customer.getOperatingSiteAddress()));
-			
+
 			customerUpdate.setContactName(customer.getContactName());
 			customerUpdate.setVatNumber(customer.getVatNumber());
 			customerUpdate.setPec(customer.getPec());
@@ -87,10 +88,16 @@ public class CustomerService {
 		log.info("All customers recovered");
 		return customerRepository.findAll(pageable);
 	}
-	
-	public Page<Customer> findByfatturatoAnnualeBetween(double from, double to, Pageable pageable){
-		log.info("Recovering all customer ...");
+
+	public Page<Customer> findByfatturatoAnnualeBetween(double from, double to, Pageable pageable) {
+		log.info("Recovering all customer by annual turnover between " + from + " and " + to + "...");
 		log.info("All customers recovered");
 		return customerRepository.findByAnnualTurnoverBetween(from, to, pageable);
+	}
+
+	public Page<Customer> findByInsertionDateBetween(Date from, Date to, Pageable pageable) {
+		log.info("Recovering all customer by annual date between " + from + " and " + to + "...");
+		log.info("All customers recovered");
+		return customerRepository.findByInsertionDateBetween(from, from, pageable);
 	}
 }
