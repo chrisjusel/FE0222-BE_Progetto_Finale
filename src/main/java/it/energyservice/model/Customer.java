@@ -28,28 +28,28 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String ragioneSociale;
-	private String partitaIva;
+	private String companyName;
+	private String vatNumber;
 	private String email;
-	private Date dataInserimento;
-	private Date dataUltimoContatto;
-	private double fatturatoAnnuale;
+	private Date insertionDate;
+	private Date lastContactDate;
+	private double annualTurnover;
 	private String pec;
-	private String telefono;
-	private String emailContatto;
-	private String nomeContatto;
-	private String cognomeContatto;
-	private String telefonoContatto;
+	private String phone;
+	private String contactEmail;
+	private String contactName;
+	private String contactSurname;
+	private String contactPhone;
 	
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	private Address indirizzoSedeOperativa;
+	private Address operatingSiteAddress;
 	
 	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	private Address indirizzoSedeLegale;
+	private Address legalSiteAddress;
 	
 	@Enumerated(EnumType.STRING)
-	private CustomerType tipoCliente;
+	private CustomerType customerType;
 	
-	@OneToMany(mappedBy = "cliente")
-	private List<Billing> fatture = new ArrayList<>();
+	@OneToMany(mappedBy = "customer")
+	private List<Billing> billings = new ArrayList<>();
 }

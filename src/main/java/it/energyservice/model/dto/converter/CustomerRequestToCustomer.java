@@ -24,22 +24,22 @@ public class CustomerRequestToCustomer implements Converter<CustomerRequest, Cus
 	public Customer convert(CustomerRequest source) {
 		Customer target = new Customer();
 
-		target.setCognomeContatto(source.getCognomeContatto());
-		target.setDataInserimento(source.getDataInserimento());
-		target.setDataUltimoContatto(source.getDataUltimoContatto());
+		target.setContactSurname(source.getContactSurname());
+		target.setInsertionDate(source.getInsertionDate());
+		target.setLastContactDate(source.getLastContactDate());
 		target.setEmail(source.getEmail());
-		target.setEmailContatto(source.getEmailContatto());
-		target.setFatturatoAnnuale(source.getFatturatoAnnuale());
-		target.setNomeContatto(source.getNomeContatto());
-		target.setPartitaIva(source.getPartitaIva());
+		target.setContactEmail(source.getContactEmail());
+		target.setAnnualTurnover(source.getAnnualTurnover());
+		target.setContactName(source.getContactName());
+		target.setVatNumber(source.getVatNumber());
 		target.setPec(source.getPec());
-		target.setRagioneSociale(source.getRagioneSociale());
-		target.setTelefono(source.getTelefono());
-		target.setTelefonoContatto(source.getTelefonoContatto());
-		target.setTipoCliente(source.getTipoCliente());
+		target.setCompanyName(source.getCompanyName());
+		target.setPhone(source.getPhone());
+		target.setContactPhone(source.getContactPhone());
+		target.setCustomerType(source.getCustomerType());
 
-		target.setIndirizzoSedeLegale(addressConverter.convert(source.getIndirizzoSedeLegale()));
-		target.setIndirizzoSedeOperativa(addressConverter.convert(source.getIndirizzoSedeOperativa()));
+		target.setLegalSiteAddress(addressConverter.convert(source.getLegalSiteAddress()));
+		target.setOperatingSiteAddress(addressConverter.convert(source.getOperatingSiteAddress()));
 
 		return target;
 	}

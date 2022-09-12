@@ -35,12 +35,12 @@ public class BillingService {
 
 		if (billingResult.isPresent()) {
 			Billing billingUpdate = billingResult.get();
-			billingUpdate.setAnno(billing.getAnno());
-			billingUpdate.setCliente(billing.getCliente());
-			billingUpdate.setData(billing.getData());
-			billingUpdate.setImporto(billing.getImporto());
-			billingUpdate.setNumero(billing.getNumero());
-			billingUpdate.setStato(billing.getStato());
+			billingUpdate.setYear(billing.getYear());
+			billingUpdate.setCustomer(billing.getCustomer());
+			billingUpdate.setDate(billing.getDate());
+			billingUpdate.setAmount(billing.getAmount());
+			billingUpdate.setNumber(billing.getNumber());
+			billingUpdate.setState(billing.getState());
 			return billingUpdate;
 		} else {
 			throw new BillingException("Error found when entering a billing");

@@ -35,12 +35,12 @@ public class AddressService {
 
 		if (addressResult.isPresent()) {
 			Address addressUpdate = addressResult.get();
-			addressUpdate.setCap(address.getCap());
-			addressUpdate.setCivico(address.getCivico());
-			addressUpdate.setComune(address.getComune());
+			addressUpdate.setZip(address.getZip());
+			addressUpdate.setCivicNumber(address.getCivicNumber());
+			addressUpdate.setCommon(address.getCommon());
 			addressUpdate.setId(id);
-			addressUpdate.setLocalita(address.getLocalita());
-			addressUpdate.setVia(address.getVia());
+			addressUpdate.setLocality(address.getLocality());
+			addressUpdate.setStreet(address.getStreet());
 			log.info("Address '" + id + "' updated");
 			return addressUpdate;
 		} else {

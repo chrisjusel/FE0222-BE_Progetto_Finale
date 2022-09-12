@@ -9,6 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProvinceRequest {
 
-	private String nome;
+	private String name;
 	private Long id;
 }

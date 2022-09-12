@@ -23,7 +23,7 @@ public class BillingStateService {
 
 	public BillingState save(BillingState billingState) {
 		log.info("Adding new billing state...");
-		log.info("New billing state '" + billingState.getNome() + "' addedd");
+		log.info("New billing state '" + billingState.getName() + "' addedd");
 		return billingStateRepository.save(billingState);
 	}
 
@@ -33,7 +33,7 @@ public class BillingStateService {
 
 		if (billingStateResult.isPresent()) {
 			BillingState billingStateUpdate = billingStateResult.get();
-			billingStateUpdate.setNome(billingState.getNome());
+			billingStateUpdate.setName(billingState.getName());
 			return billingStateUpdate;
 		} else {
 			throw new BillingStateException("Error found when entering a billing state");
@@ -69,10 +69,10 @@ public class BillingStateService {
 
 	public BillingState findByName(String name) {
 		log.info("Recovering billing by name...");
-		Optional<BillingState> billingStateResult = billingStateRepository.findByNome(name);
+		Optional<BillingState> billingStateResult = billingStateRepository.findByName(name);
 
 		if (billingStateResult.isPresent()) {
-			log.info("Billing state '" + billingStateResult.get().getNome() + "' recovered");
+			log.info("Billing state '" + billingStateResult.get().getName() + "' recovered");
 			return billingStateResult.get();
 		} else {
 			throw new BillingNotFoundException("No billing states are present with name " + name);

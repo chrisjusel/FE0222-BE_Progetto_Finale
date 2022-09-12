@@ -8,5 +8,5 @@ import it.energyservice.model.BillingState;
 
 public interface BillingStateRepository extends JpaRepository<BillingState, Long>{
 
-	public Optional<BillingState> findByNome(String nome);
+	public Optional<BillingState> findByName(String nome);
 }

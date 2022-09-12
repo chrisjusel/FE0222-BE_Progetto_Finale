@@ -10,5 +10,5 @@ import it.energyservice.model.Province;
 @Repository
 public interface ProvinceRepository extends JpaRepository<Province, Long> {
 
-	List<Province> findByNome(String nome);
+	List<Province> findByName(String nome);
 }

@@ -27,20 +27,19 @@ public class Billing {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private int anno;
+	private int year;
 	
 	//@DateTimeFormat(iso = ISO.DATE_TIME)
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-	private Date data;
+	private Date date;
 	
-	private double importo;
-	private int numero;
+	private double amount;
+	private int number;
 	
 	@ManyToOne
 	@JoinColumn
-	@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-	private Customer cliente;
+	private Customer customer;
 	
 	@OneToOne
-	private BillingState stato;
+	private BillingState state;
 }

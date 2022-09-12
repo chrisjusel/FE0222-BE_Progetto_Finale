@@ -22,11 +22,11 @@ public class Address {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	private String via;
-	private String civico;
-	private String localita;
-	private String cap;
+	private String street;
+	private String civicNumber;
+	private String locality;
+	private String zip;
 	
 	@OneToOne
-	private Common comune;
+	private Common common;
 }

@@ -13,10 +13,10 @@ import lombok.Setter;
 public class BillingResponse {
 
 	private Long id;
-	private int anno;
-	private Date data;
-	private double importo;
-	private int numero;
-	private CustomerResponse cliente = new CustomerResponse();
-	private BillingState stato;
+	private int year;
+	private Date date;
+	private double amount;
+	private int number;
+	private CustomerResponse customer = new CustomerResponse();
+	private BillingState state;
 }

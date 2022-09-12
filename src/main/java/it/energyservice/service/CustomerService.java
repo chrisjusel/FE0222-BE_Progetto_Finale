@@ -25,7 +25,7 @@ public class CustomerService {
 
 	public Customer save(Customer customer) {
 		log.info("Adding new customer...");
-		log.info("New customer '" + customer.getRagioneSociale() + "' addedd");
+		log.info("New customer '" + customer.getCompanyName() + "' addedd");
 		return customerRepository.save(customer);
 	}
 
@@ -35,27 +35,27 @@ public class CustomerService {
 
 		if (customerResult.isPresent()) {
 			Customer customerUpdate = customerResult.get();
-			customerUpdate.setCognomeContatto(customer.getCognomeContatto());
-			customerUpdate.setDataInserimento(customer.getDataInserimento());
-			customerUpdate.setDataUltimoContatto(customer.getDataUltimoContatto());
+			customerUpdate.setContactSurname(customer.getContactSurname());
+			customerUpdate.setInsertionDate(customer.getInsertionDate());
+			customerUpdate.setLastContactDate(customer.getLastContactDate());
 			customerUpdate.setEmail(customer.getEmail());
-			customerUpdate.setEmailContatto(customer.getEmailContatto());
-			customerUpdate.setFatturatoAnnuale(customer.getFatturatoAnnuale());
-			customerUpdate.setFatture(customer.getFatture());
+			customerUpdate.setContactEmail(customer.getContactEmail());
+			customerUpdate.setAnnualTurnover(customer.getAnnualTurnover());
+			customerUpdate.setBillings(customer.getBillings());
 
-			customerUpdate.setIndirizzoSedeLegale(addressService.update(customer.getIndirizzoSedeLegale().getId(),
-					customer.getIndirizzoSedeLegale()));
+			customerUpdate.setLegalSiteAddress(addressService.update(customer.getLegalSiteAddress().getId(),
+					customer.getLegalSiteAddress()));
 			
-			customerUpdate.setIndirizzoSedeOperativa(addressService.update(customer.getIndirizzoSedeOperativa().getId(),
-					customer.getIndirizzoSedeOperativa()));
+			customerUpdate.setOperatingSiteAddress(addressService.update(customer.getOperatingSiteAddress().getId(),
+					customer.getOperatingSiteAddress()));
 			
-			customerUpdate.setNomeContatto(customer.getNomeContatto());
-			customerUpdate.setPartitaIva(customer.getPartitaIva());
+			customerUpdate.setContactName(customer.getContactName());
+			customerUpdate.setVatNumber(customer.getVatNumber());
 			customerUpdate.setPec(customer.getPec());
-			customerUpdate.setRagioneSociale(customer.getRagioneSociale());
-			customerUpdate.setTelefono(customer.getTelefono());
-			customerUpdate.setTelefonoContatto(customer.getTelefonoContatto());
-			log.info("Customer '" + customer.getRagioneSociale() + "' updated");
+			customerUpdate.setCompanyName(customer.getCompanyName());
+			customerUpdate.setPhone(customer.getPhone());
+			customerUpdate.setContactPhone(customer.getContactPhone());
+			log.info("Customer '" + customer.getCompanyName() + "' updated");
 			return customerUpdate;
 		} else {
 			throw new CustomerException("Error found when entering a customer");
@@ -91,6 +91,6 @@ public class CustomerService {
 	public Page<Customer> findByfatturatoAnnualeBetween(double from, double to, Pageable pageable){
 		log.info("Recovering all customer ...");
 		log.info("All customers recovered");
-		return customerRepository.findByfatturatoAnnualeBetween(from, to, pageable);
+		return customerRepository.findByAnnualTurnoverBetween(from, to, pageable);
 	}
 }

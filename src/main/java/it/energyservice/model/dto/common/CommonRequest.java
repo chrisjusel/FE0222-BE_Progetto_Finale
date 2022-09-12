@@ -9,6 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CommonRequest {
 
-	private String nome;
-	private ProvinceRequest provincia;
+	private String name;
+	private ProvinceRequest province;
 }

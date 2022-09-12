@@ -12,12 +12,12 @@ import lombok.Setter;
 public class BillingRequest {
 
 	private Long id;
-	private int anno;
-	private Date data;
-	private double importo;
-	private int numero;
+	private int year;
+	private Date date;
+	private double amount;
+	private int number;
 
-	private Long cliente;
+	private Long customer;
 
-	private String stato;
+	private String state;
 }

@@ -12,21 +12,21 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CustomerRequest {
 
-	private String ragioneSociale;
-	private String partitaIva;
+	private String companyName;
+	private String vatNumber;
 	private String email;
-	private Date dataInserimento;
-	private Date dataUltimoContatto;
-	private double fatturatoAnnuale;
+	private Date insertionDate;
+	private Date lastContactDate;
+	private double annualTurnover;
 	private String pec;
-	private String telefono;
-	private String emailContatto;
-	private String nomeContatto;
-	private String cognomeContatto;
-	private String telefonoContatto;
-	private CustomerType tipoCliente;
+	private String phone;
+	private String contactEmail;
+	private String contactName;
+	private String contactSurname;
+	private String contactPhone;
+	private CustomerType customerType;
 
-	private AddressRequest indirizzoSedeOperativa;
-	private AddressRequest indirizzoSedeLegale;
+	private AddressRequest operatingSiteAddress;
+	private AddressRequest legalSiteAddress;
 
 }

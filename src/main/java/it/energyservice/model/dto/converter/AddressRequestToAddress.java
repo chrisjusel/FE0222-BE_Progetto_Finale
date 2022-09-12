@@ -19,11 +19,11 @@ public class AddressRequestToAddress implements Converter<AddressRequest, Addres
 		Address target = new Address();
 
 		target.setId(source.getId());
-		target.setCap(source.getCap());
-		target.setCivico(source.getCivico());
-		target.setLocalita(source.getLocalita());
-		target.setVia(source.getVia());
-		target.setComune(commonService.findById(source.getComune()));
+		target.setZip(source.getZip());
+		target.setCivicNumber(source.getCivicNumber());
+		target.setLocality(source.getLocality());
+		target.setStreet(source.getStreet());
+		target.setCommon(commonService.findById(source.getCommon()));
 
 		return target;
 	}

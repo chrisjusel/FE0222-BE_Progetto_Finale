@@ -21,8 +21,8 @@ public abstract class ProvinceCsvReader {
 		while ((record = reader.readNext()) != null) {
 			if (!record[3].equals("")) {
 				Province province = new Province();
-				province.setNome(record[1]);
-				province.setSigla(record[0]);
+				province.setName(record[1]);
+				province.setSign(record[0]);
 				province.setId(Long.parseLong(record[3]));
 				provinces.add(province);
 			}

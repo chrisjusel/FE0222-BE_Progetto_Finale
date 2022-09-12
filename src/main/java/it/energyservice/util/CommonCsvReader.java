@@ -33,8 +33,8 @@ public class CommonCsvReader {
 			if (!record[3].equals("") ) {
 				if(provinceService.findProvinceByName(record[3]) != null) {
 					Common common = new Common();
-					common.setNome(record[2]);
-					common.setProvincia(provinceService.findProvinceByName(record[3]));
+					common.setName(record[2]);
+					common.setProvince(provinceService.findProvinceByName(record[3]));
 					commons.add(common);
 				}
 			}

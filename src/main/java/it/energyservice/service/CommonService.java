@@ -22,7 +22,7 @@ public class CommonService {
 
 	public Common save(Common common) {
 		log.info("Adding new common...");
-		log.info("New common '" + common.getNome() + "' addedd");
+		log.info("New common '" + common.getName() + "' addedd");
 		return commonRepository.save(common);
 	}
 
@@ -32,9 +32,9 @@ public class CommonService {
 
 		if (commonResult.isPresent()) {
 			Common commonUpdate = commonResult.get();
-			commonUpdate.setNome(common.getNome());
-			commonUpdate.setProvincia(common.getProvincia());
-			log.info("Common '" + common.getNome() + "' updated");
+			commonUpdate.setName(common.getName());
+			commonUpdate.setProvince(common.getProvince());
+			log.info("Common '" + common.getName() + "' updated");
 			return commonUpdate;
 		} else {
 			throw new CommonException("Error found when entering a common");

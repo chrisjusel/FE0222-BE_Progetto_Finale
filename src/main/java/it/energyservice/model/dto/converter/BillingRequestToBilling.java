@@ -22,12 +22,12 @@ public class BillingRequestToBilling implements Converter<BillingRequest, Billin
 	public Billing convert(BillingRequest source) {
 		Billing target = new Billing();
 		target.setId(source.getId());
-		target.setAnno(source.getAnno());
-		target.setData(source.getData());
-		target.setImporto(source.getImporto());
-		target.setNumero(source.getNumero());
-		target.setStato(billingStateService.findByName(source.getStato()));
-		target.setCliente(customerService.findById(source.getCliente()));
+		target.setYear(source.getYear());
+		target.setDate(source.getDate());
+		target.setAmount(source.getAmount());
+		target.setNumber(source.getNumber());
+		target.setState(billingStateService.findByName(source.getState()));
+		target.setCustomer(customerService.findById(source.getCustomer()));
 
 		return target;
 	}

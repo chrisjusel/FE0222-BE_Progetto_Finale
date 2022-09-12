@@ -23,7 +23,7 @@ public class ProvinceService {
 
 	public Province save(Province province) {
 		log.info("Adding new province...");
-		log.info("New province '" + province.getNome() + "' addedd");
+		log.info("New province '" + province.getName() + "' addedd");
 		return provinceRepository.save(province);
 	}
 
@@ -33,9 +33,9 @@ public class ProvinceService {
 
 		if (provinceResult.isPresent()) {
 			Province provinceUpdate = provinceResult.get();
-			provinceUpdate.setNome(province.getNome());
-			provinceUpdate.setSigla(province.getSigla());
-			log.info("Province '" + province.getNome() + "' updated");
+			provinceUpdate.setName(province.getName());
+			provinceUpdate.setSign(province.getSign());
+			log.info("Province '" + province.getName() + "' updated");
 			return provinceUpdate;
 		} else {
 			throw new ProvinceException("Error found when entering a province");
@@ -69,15 +69,15 @@ public class ProvinceService {
 		return provinceRepository.findAll(pageable);
 	}
 	
-	public List<Province> findByNome(String nome){
-		return provinceRepository.findByNome(nome);
+	public List<Province> findByNome(String name){
+		return provinceRepository.findByName(name);
 	}
 	
-	public Province findProvinceByName(String nome) {
-		if(!findByNome(nome).isEmpty()) {
-			return findByNome(nome).get(0);
+	public Province findProvinceByName(String name) {
+		if(!findByNome(name).isEmpty()) {
+			return findByNome(name).get(0);
 		}else 
-			log.info("Provincia " + nome + " non trovata");
+			log.info("Provincia " + name + " non trovata");
 		return null;
 	}
 }

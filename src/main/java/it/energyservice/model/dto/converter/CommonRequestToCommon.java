@@ -20,11 +20,11 @@ public class CommonRequestToCommon implements Converter<CommonRequest, Common> {
 	public Common convert(CommonRequest source) {
 		Common target = new Common();
 
-		target.setNome(source.getNome());
+		target.setName(source.getName());
 		// target.setProvincia(provinceService.findById(source.getProvincia().getId()));
-		Province province = provinceService.findProvinceByName(source.getProvincia().getNome());
+		Province province = provinceService.findProvinceByName(source.getProvince().getName());
 		if(province != null) {
-			target.setProvincia(province);
+			target.setProvince(province);
 		} else {
 			throw new ProvinceNotFoundException("No provinces found with this name");
 		}

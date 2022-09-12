@@ -8,5 +8,5 @@ import it.energyservice.model.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long>{
 
-	Page<Customer> findByfatturatoAnnualeBetween(double from, double to, Pageable pageable);
+	Page<Customer> findByAnnualTurnoverBetween(double from, double to, Pageable pageable);
 }

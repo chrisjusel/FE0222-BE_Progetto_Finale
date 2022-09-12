@@ -19,6 +19,6 @@ public class Province {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String nome;
-	private String sigla;
+	private String name;
+	private String sign;
 }

@@ -21,5 +21,5 @@ public class BillingState {
 	private Long id;
 	
 	@Column(unique = true)
-	private String nome;
+	private String name;
 }

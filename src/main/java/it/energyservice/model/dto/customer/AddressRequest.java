@@ -10,10 +10,10 @@ import lombok.Setter;
 public class AddressRequest {
 
 	private Long id;
-	private String via;
-	private String civico;
-	private String localita;
-	private String cap;
+	private String street;
+	private String civicNumber;
+	private String locality;
+	private String zip;
 	
-	private Long comune;
+	private Long common;
 }

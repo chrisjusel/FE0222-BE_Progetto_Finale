@@ -13,12 +13,12 @@ public class BillingToBillingResponse implements Converter<Billing, BillingRespo
 	public BillingResponse convert(Billing source) {
 		BillingResponse target = new BillingResponse();
 		target.setId(source.getId());
-		target.setAnno(source.getAnno());
-		target.setData(source.getData());
-		target.setImporto(source.getImporto());
-		target.setNumero(source.getNumero());
-		target.getCliente().setId(source.getCliente().getId());
-		target.setStato(source.getStato());
+		target.setYear(source.getYear());
+		target.setDate(source.getDate());
+		target.setAmount(source.getAmount());
+		target.setNumber(source.getNumber());
+		target.getCustomer().setId(source.getCustomer().getId());
+		target.setState(source.getState());
 		return target;
 	}
 
