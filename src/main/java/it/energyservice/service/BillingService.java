@@ -25,7 +25,7 @@ public class BillingService {
 
 	public Billing save(Billing billing) {
 		log.info("Adding new billing...");
-		log.info("New province '" + billing.getId() + "' addedd");
+		log.info("New billing addedd");
 		return billingRepository.save(billing);
 	}
 
@@ -72,4 +72,28 @@ public class BillingService {
 		log.info("All billings recovered");
 		return billingRepository.findAll(pageable);
 	}
+
+	public Page<Billing> getByCustomerId(Long customerId, Pageable pageable) {
+		log.info("Recovering all billings by customer id...");
+		log.info("All billings recovered");
+		return billingRepository.getBillingsByCustomerId(customerId, pageable);
+	}
+
+	public Page<Billing> getByState(Long stateId, Pageable pageable) {
+		log.info("Recovering all billings by state...");
+		log.info("All billings recovered");
+		return billingRepository.getBillingsByBillingState(stateId, pageable);
+	}
+
+	public Page<Billing> getByYear(Integer year, Pageable pageable) {
+		log.info("Recovering all billings by year...");
+		log.info("All billings recovered");
+		return billingRepository.findByYear(year, pageable);
+	}
+	
+	public Page<Billing> getByAmountBetween(Double from, Double to, Pageable pageable) {
+		log.info("Recovering all billings by amount between...");
+		log.info("All billings recovered");
+		return billingRepository.findByAmountBetween(from, to, pageable);
+	} 
 }

@@ -15,11 +15,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import it.energyservice.exception.BillingNotFoundException;
 import it.energyservice.model.Billing;
-import it.energyservice.model.Province;
 import it.energyservice.model.dto.billing.BillingRequest;
 import it.energyservice.model.dto.billing.BillingResponse;
 import it.energyservice.model.dto.converter.BillingRequestToBilling;
@@ -88,4 +87,61 @@ public class BillingController {
 
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
+
+	@GetMapping("/customer/{id}")
+	public ResponseEntity<Page<BillingResponse>> getByCustomerId(@PathVariable Long id, Pageable pageable) {
+		log.info("New GET request to Billing: getByCustomerId");
+		Page<Billing> billingsFound = billingService.getByCustomerId(id, pageable);
+		ArrayList<BillingResponse> billingResponse = new ArrayList<>();
+
+		for (Billing billing : billingsFound.getContent()) {
+			BillingResponse res = billingToBillingResponse.convert(billing);
+			billingResponse.add(res);
+		}
+		Page<BillingResponse> response = new PageImpl<>(billingResponse);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@GetMapping("/state/{id}")
+	public ResponseEntity<Page<BillingResponse>> getByState(@PathVariable Long id, Pageable pageable) {
+		log.info("New GET request to Billing: getByState");
+		Page<Billing> billingsFound = billingService.getByState(id, pageable);
+		ArrayList<BillingResponse> billingResponse = new ArrayList<>();
+
+		for (Billing billing : billingsFound.getContent()) {
+			BillingResponse res = billingToBillingResponse.convert(billing);
+			billingResponse.add(res);
+		}
+		Page<BillingResponse> response = new PageImpl<>(billingResponse);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@GetMapping("/year")
+	public ResponseEntity<Page<BillingResponse>> getByYear(@RequestParam Integer year, Pageable pageable) {
+		log.info("New GET request to Billing: getByYear");
+		Page<Billing> billingsFound = billingService.getByYear(year, pageable);
+		ArrayList<BillingResponse> billingResponse = new ArrayList<>();
+
+		for (Billing billing : billingsFound.getContent()) {
+			BillingResponse res = billingToBillingResponse.convert(billing);
+			billingResponse.add(res);
+		}
+		Page<BillingResponse> response = new PageImpl<>(billingResponse);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@GetMapping("/amount")
+	public ResponseEntity<Page<BillingResponse>> getByYear(@RequestParam Double from, Double to, Pageable pageable) {
+		log.info("New GET request to Billing: getByYear");
+		Page<Billing> billingsFound = billingService.getByAmountBetween(from, to, pageable);
+		ArrayList<BillingResponse> billingResponse = new ArrayList<>();
+
+		for (Billing billing : billingsFound.getContent()) {
+			BillingResponse res = billingToBillingResponse.convert(billing);
+			billingResponse.add(res);
+		}
+		Page<BillingResponse> response = new PageImpl<>(billingResponse);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
 }
