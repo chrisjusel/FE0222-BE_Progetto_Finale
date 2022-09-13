@@ -1,5 +1,6 @@
 package it.energyservice.service;
 
+import java.util.Date;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -90,10 +91,19 @@ public class BillingService {
 		log.info("All billings recovered");
 		return billingRepository.findByYear(year, pageable);
 	}
-	
+
 	public Page<Billing> getByAmountBetween(Double from, Double to, Pageable pageable) {
 		log.info("Recovering all billings by amount between...");
 		log.info("All billings recovered");
 		return billingRepository.findByAmountBetween(from, to, pageable);
-	} 
+	}
+
+	public Page<Billing> getByDate(Date date, Pageable pageable) {
+		log.info("Recovering all billings by date...");
+		log.info("All billings recovered");
+		Date to = new Date(date.getTime());
+		to.setHours(23);
+		to.setMinutes(59);
+		return billingRepository.getByDate(date, to, pageable);
+	}
 }

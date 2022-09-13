@@ -1,11 +1,13 @@
 package it.energyservice.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -131,9 +133,25 @@ public class BillingController {
 	}
 
 	@GetMapping("/amount")
-	public ResponseEntity<Page<BillingResponse>> getByYear(@RequestParam Double from, Double to, Pageable pageable) {
+	public ResponseEntity<Page<BillingResponse>> getByAmountBetween(@RequestParam Double from, Double to,
+			Pageable pageable) {
 		log.info("New GET request to Billing: getByYear");
 		Page<Billing> billingsFound = billingService.getByAmountBetween(from, to, pageable);
+		ArrayList<BillingResponse> billingResponse = new ArrayList<>();
+
+		for (Billing billing : billingsFound.getContent()) {
+			BillingResponse res = billingToBillingResponse.convert(billing);
+			billingResponse.add(res);
+		}
+		Page<BillingResponse> response = new PageImpl<>(billingResponse);
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
+	@GetMapping("/date")
+	public ResponseEntity<Page<BillingResponse>> getByDate(
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date date, Pageable pageable) {
+		log.info("New GET request to Billing: getByDate");
+		Page<Billing> billingsFound = billingService.getByDate(date, pageable);
 		ArrayList<BillingResponse> billingResponse = new ArrayList<>();
 
 		for (Billing billing : billingsFound.getContent()) {

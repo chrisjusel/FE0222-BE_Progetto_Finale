@@ -96,9 +96,15 @@ public class CustomerService {
 	}
 
 	public Page<Customer> findByInsertionDateBetween(Date from, Date to, Pageable pageable) {
-		log.info("Recovering all customer by annual date between " + from + " and " + to + "...");
+		log.info("Recovering all customer by insertion date between " + from + " and " + to + "...");
 		log.info("All customers recovered");
-		return customerRepository.findByInsertionDateBetween(from, from, pageable);
+		return customerRepository.getByInsertionDateBetween(from, to, pageable);
+	}
+	
+	public Page<Customer> findByLastContactDateBetween(Date from, Date to, Pageable pageable) {
+		log.info("Recovering all customer by contact date between " + from + " and " + to + "...");
+		log.info("All customers recovered");
+		return customerRepository.getByLastContactDateBetween(from, to, pageable);
 	}
 
 	public Page<Customer> findByCompanyNameContains(String substring, Pageable pageable) {

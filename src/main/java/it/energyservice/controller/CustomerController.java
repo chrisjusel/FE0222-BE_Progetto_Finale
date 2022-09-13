@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import it.energyservice.model.Customer;
 import it.energyservice.model.dto.converter.CustomerRequestToCustomer;
 import it.energyservice.model.dto.customer.CustomerRequest;
@@ -80,18 +82,26 @@ public class CustomerController {
 		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
 	}
 
-	@GetMapping("/date")
+	@GetMapping("/insertiondate")
 	public ResponseEntity<Page<Customer>> findByinsertionDateBetween(
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date from,
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date to, Pageable pageable) {
-		log.info("New GET request to Customer: findByAnnualTurnoverBetween");
+		log.info("New GET request to Customer: findByinsertionDateBetween");
 		Page<Customer> response = customerService.findByInsertionDateBetween(from, to, pageable);
 		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
 	}
 
+	@GetMapping("/lastcontactdate")
+	public ResponseEntity<Page<Customer>> findByLastContactDateBetween(
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date from,
+			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date to, Pageable pageable) {
+		log.info("New GET request to Customer: findByLastContactDateBetween");
+		Page<Customer> response = customerService.findByLastContactDateBetween(from, to, pageable);
+		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
+	}
+
 	@GetMapping("/companyname")
-	public ResponseEntity<Page<Customer>> findByCompanyNameContains(@RequestParam String name,
-			Pageable pageable) {
+	public ResponseEntity<Page<Customer>> findByCompanyNameContains(@RequestParam String name, Pageable pageable) {
 		log.info("New GET request to Customer: findByCompanyNameContaining");
 		Page<Customer> response = customerService.findByCompanyNameContains(name, pageable);
 		return new ResponseEntity<Page<Customer>>(response, HttpStatus.OK);
