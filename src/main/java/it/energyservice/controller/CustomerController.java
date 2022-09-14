@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,6 +39,7 @@ public class CustomerController {
 	private CustomerRequestToCustomer customerRequestToCustomer;
 
 	@PostMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Customer> save(@RequestBody CustomerRequest request) {
 		log.info("New POST request to Customer: save");
 		Customer customer = customerRequestToCustomer.convert(request);
@@ -46,6 +48,7 @@ public class CustomerController {
 	}
 
 	@PutMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Customer> update(@PathVariable Long id, @RequestBody CustomerRequest request) {
 		log.info("New PUT request to Customer: update");
 		Customer customer = customerRequestToCustomer.convert(request);
@@ -54,6 +57,7 @@ public class CustomerController {
 	}
 
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Customer: delete");
 		customerService.delete(id);

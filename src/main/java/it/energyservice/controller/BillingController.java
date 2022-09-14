@@ -10,6 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,6 +44,7 @@ public class BillingController {
 	private BillingToBillingResponse billingToBillingResponse;
 
 	@PostMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<BillingResponse> save(@RequestBody BillingRequest request) {
 		log.info("New POST request to Billing: save");
 		Billing billing = billingRequestToBilling.convert(request);
@@ -52,6 +54,7 @@ public class BillingController {
 	}
 
 	@PutMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<BillingResponse> update(@PathVariable Long id, @RequestBody BillingRequest request) {
 		log.info("New PUT request to Billing: update");
 		Billing billing = billingRequestToBilling.convert(request);
@@ -61,6 +64,7 @@ public class BillingController {
 	}
 
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Billing: delete");
 		billingService.delete(id);

@@ -17,6 +17,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -60,5 +61,6 @@ public class Customer {
 	private CustomerType customerType;
 
 	@OneToMany(mappedBy = "customer")
+	@JsonIgnore
 	private List<Billing> billings = new ArrayList<>();
 }

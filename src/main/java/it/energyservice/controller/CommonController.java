@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,6 +33,7 @@ public class CommonController {
 	private CommonRequestToCommon commonRequestToCommon;
 
 	@PostMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Common> save(@RequestBody CommonRequest request) {
 		log.info("New POST request to Common: save");
 		Common common = commonRequestToCommon.convert(request);
@@ -40,6 +42,7 @@ public class CommonController {
 	}
 
 	@PutMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Common> update(@PathVariable Long id, @RequestBody CommonRequest request) {
 		log.info("New PUT request to Common: update");
 		Common common = commonRequestToCommon.convert(request);
@@ -48,6 +51,7 @@ public class CommonController {
 	}
 
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Common: delete");
 		commonService.delete(id);

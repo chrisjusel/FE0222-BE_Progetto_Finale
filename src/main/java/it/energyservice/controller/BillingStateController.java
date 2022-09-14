@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ public class BillingStateController {
 	private BillingStateService billingStateService;
 
 	@PostMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<BillingState> save(@RequestBody BillingState request) {
 		log.info("New POST request to Billing state: save");
 		BillingState response = billingStateService.save(request);
@@ -34,6 +36,7 @@ public class BillingStateController {
 	}
 
 	@PutMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<BillingState> update(@PathVariable Long id, @RequestBody BillingState request) {
 		log.info("New PUT request to Billing state: update");
 		BillingState response = billingStateService.update(id, request);
@@ -41,6 +44,7 @@ public class BillingStateController {
 	}
 
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Billing state: delete");
 		billingStateService.delete(id);

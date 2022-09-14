@@ -31,6 +31,5 @@ public abstract class ProvinceCsvReader {
 		reader.close();
 
 		return provinces;
-
 	}
 }

@@ -37,7 +37,7 @@ public class CustomerRequest {
 	private String contactPhone;
 	private CustomerType customerType;
 
-	private AddressRequest operatingSiteAddress;
-	private AddressRequest legalSiteAddress;
+	private AddressRequest operatingSiteAddress = new AddressRequest();
+	private AddressRequest legalSiteAddress = new AddressRequest();
 
 }

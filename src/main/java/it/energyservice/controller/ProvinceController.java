@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ public class ProvinceController {
 	private ProvinceService provinceService;
 
 	@PostMapping
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Province> save(@RequestBody Province province) {
 		log.info("New POST request to Province: save");
 		Province response = provinceService.save(province);
@@ -34,6 +36,7 @@ public class ProvinceController {
 	}
 
 	@PutMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<Province> update(@PathVariable Long id, @RequestBody Province province) {
 		log.info("New PUT request to Province: update");
 		Province response = provinceService.update(id, province);
@@ -41,6 +44,7 @@ public class ProvinceController {
 	}
 
 	@DeleteMapping("/{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Province: delete");
 		provinceService.delete(id);
