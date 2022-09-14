@@ -21,7 +21,7 @@ import it.energyservice.service.AddressService;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/api/indirizzi")
+@RequestMapping("/api/addresses")
 @Slf4j
 public class AddressController {
 

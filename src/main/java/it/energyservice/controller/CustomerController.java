@@ -28,7 +28,7 @@ import it.energyservice.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/api/clienti")
+@RequestMapping("/api/customers")
 @Slf4j
 public class CustomerController {
 

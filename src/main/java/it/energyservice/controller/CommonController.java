@@ -22,7 +22,7 @@ import it.energyservice.service.CommonService;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/api/comuni")
+@RequestMapping("/api/commons")
 @Slf4j
 public class CommonController {
 

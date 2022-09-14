@@ -51,16 +51,16 @@ public class Customer {
 	private String contactSurname;
 	private String contactPhone;
 
-	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
 	private Address operatingSiteAddress;
 
-	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@OneToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE })
 	private Address legalSiteAddress;
 
 	@Enumerated(EnumType.STRING)
 	private CustomerType customerType;
 
-	@OneToMany(mappedBy = "customer")
+	@OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE)
 	@JsonIgnore
 	private List<Billing> billings = new ArrayList<>();
 }

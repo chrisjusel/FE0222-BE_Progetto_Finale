@@ -20,7 +20,7 @@ import it.energyservice.service.BillingStateService;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/api/statifattura")
+@RequestMapping("/api/billingstates")
 @Slf4j
 public class BillingStateController {
 

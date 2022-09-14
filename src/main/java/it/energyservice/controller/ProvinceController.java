@@ -20,7 +20,7 @@ import it.energyservice.service.ProvinceService;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/api/province")
+@RequestMapping("/api/provinces")
 @Slf4j
 public class ProvinceController {
 
