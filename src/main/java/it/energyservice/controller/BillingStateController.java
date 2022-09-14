@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.energyservice.model.BillingState;
 import it.energyservice.service.BillingStateService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,7 @@ public class BillingStateController {
 
 	@PostMapping
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<BillingState> save(@RequestBody BillingState request) {
 		log.info("New POST request to Billing state: save");
 		BillingState response = billingStateService.save(request);
@@ -37,6 +39,7 @@ public class BillingStateController {
 
 	@PutMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<BillingState> update(@PathVariable Long id, @RequestBody BillingState request) {
 		log.info("New PUT request to Billing state: update");
 		BillingState response = billingStateService.update(id, request);
@@ -45,6 +48,7 @@ public class BillingStateController {
 
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Billing state: delete");
 		billingStateService.delete(id);

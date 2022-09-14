@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.energyservice.model.Address;
 import it.energyservice.model.dto.converter.AddressRequestToAddress;
 import it.energyservice.model.dto.customer.AddressRequest;
@@ -33,6 +36,9 @@ public class AddressController {
 
 	@PutMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
+	@Operation(summary = "Updating an address", description = "Method to update an existing address")
+	@ApiResponse(responseCode = "200", description = "Updated address")
 	public ResponseEntity<Address> update(@PathVariable Long id, @RequestBody AddressRequest request) {
 		log.info("New PUT request to Address: update");
 		Address address = addressRequestToAddress.convert(request);
@@ -42,6 +48,9 @@ public class AddressController {
 
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
+	@Operation(summary = "Delete an address", description = "Method to delete an existing address")
+	@ApiResponse(responseCode = "200", description = "Address deleted")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Address: delete");
 		addressService.delete(id);
@@ -49,6 +58,8 @@ public class AddressController {
 	}
 
 	@GetMapping("/{id}")
+	@Operation(summary = "Retrieving an address", description = "Method to retrieve an address through the id")
+	@ApiResponse(responseCode = "200", description = "Address recovered")
 	public ResponseEntity<Address> getById(@PathVariable Long id) {
 		log.info("New GET request to Address: getById");
 		Address response = addressService.findById(id);
@@ -56,6 +67,8 @@ public class AddressController {
 	}
 
 	@GetMapping
+	@Operation(summary = "Retrieval of all addresses", description = "Method to retrieve all the addresses present")
+	@ApiResponse(responseCode = "200", description = "Addresses retrieved")
 	public ResponseEntity<Page<Address>> getAll(Pageable pageable) {
 		log.info("New GET request to Address: getAll");
 		Page<Address> response = addressService.getAll(pageable);

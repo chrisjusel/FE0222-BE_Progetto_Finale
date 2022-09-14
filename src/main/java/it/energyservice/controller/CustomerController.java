@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.energyservice.model.Customer;
 import it.energyservice.model.dto.converter.CustomerRequestToCustomer;
 import it.energyservice.model.dto.customer.CustomerRequest;
@@ -40,6 +39,7 @@ public class CustomerController {
 
 	@PostMapping
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<Customer> save(@RequestBody CustomerRequest request) {
 		log.info("New POST request to Customer: save");
 		Customer customer = customerRequestToCustomer.convert(request);
@@ -49,6 +49,7 @@ public class CustomerController {
 
 	@PutMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<Customer> update(@PathVariable Long id, @RequestBody CustomerRequest request) {
 		log.info("New PUT request to Customer: update");
 		Customer customer = customerRequestToCustomer.convert(request);
@@ -58,6 +59,7 @@ public class CustomerController {
 
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Customer: delete");
 		customerService.delete(id);

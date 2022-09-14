@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.energyservice.model.Common;
 import it.energyservice.model.dto.common.CommonRequest;
 import it.energyservice.model.dto.converter.CommonRequestToCommon;
@@ -34,6 +35,7 @@ public class CommonController {
 
 	@PostMapping
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<Common> save(@RequestBody CommonRequest request) {
 		log.info("New POST request to Common: save");
 		Common common = commonRequestToCommon.convert(request);
@@ -43,6 +45,7 @@ public class CommonController {
 
 	@PutMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<Common> update(@PathVariable Long id, @RequestBody CommonRequest request) {
 		log.info("New PUT request to Common: update");
 		Common common = commonRequestToCommon.convert(request);
@@ -52,6 +55,7 @@ public class CommonController {
 
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Common: delete");
 		commonService.delete(id);

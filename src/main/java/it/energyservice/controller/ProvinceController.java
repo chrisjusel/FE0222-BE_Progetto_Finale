@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.energyservice.model.Province;
 import it.energyservice.service.ProvinceService;
 import lombok.extern.slf4j.Slf4j;
@@ -29,6 +30,7 @@ public class ProvinceController {
 
 	@PostMapping
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<Province> save(@RequestBody Province province) {
 		log.info("New POST request to Province: save");
 		Province response = provinceService.save(province);
@@ -37,6 +39,7 @@ public class ProvinceController {
 
 	@PutMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<Province> update(@PathVariable Long id, @RequestBody Province province) {
 		log.info("New PUT request to Province: update");
 		Province response = provinceService.update(id, province);
@@ -45,6 +48,7 @@ public class ProvinceController {
 
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Province: delete");
 		provinceService.delete(id);

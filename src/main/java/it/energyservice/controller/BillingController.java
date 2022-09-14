@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.energyservice.model.Billing;
 import it.energyservice.model.dto.billing.BillingRequest;
 import it.energyservice.model.dto.billing.BillingResponse;
@@ -45,6 +48,9 @@ public class BillingController {
 
 	@PostMapping
 	@PreAuthorize("hasRole('ADMIN')")
+	@Operation(summary = "Save an invoice", description = "Method for saving an invoice")
+	@ApiResponse(responseCode = "200", description = "Invoice saved")
+	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<BillingResponse> save(@RequestBody BillingRequest request) {
 		log.info("New POST request to Billing: save");
 		Billing billing = billingRequestToBilling.convert(request);
@@ -55,6 +61,9 @@ public class BillingController {
 
 	@PutMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
+	@Operation(summary = "Update an invoice", description = "Method for updating an invoice")
+	@ApiResponse(responseCode = "200", description = "Updated invoice")
 	public ResponseEntity<BillingResponse> update(@PathVariable Long id, @RequestBody BillingRequest request) {
 		log.info("New PUT request to Billing: update");
 		Billing billing = billingRequestToBilling.convert(request);
@@ -65,6 +74,9 @@ public class BillingController {
 
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
+	@SecurityRequirement(name = "bearerAuth")
+	@Operation(summary = "Remove an invoice", description = "Method to remove an invoice")
+	@ApiResponse(responseCode = "200", description = "Invoice removed")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Billing: delete");
 		billingService.delete(id);
@@ -72,6 +84,8 @@ public class BillingController {
 	}
 
 	@GetMapping("/{id}")
+	@Operation(summary = "Retrieve an invoice", description = "Method to retrieve an invoice through its id")
+	@ApiResponse(responseCode = "200", description = "Invoice recovered")
 	public ResponseEntity<BillingResponse> getById(@PathVariable Long id) {
 		log.info("New GET request to Billing: getById");
 		Billing foundBilling = billingService.findById(id);
@@ -80,6 +94,8 @@ public class BillingController {
 	}
 
 	@GetMapping
+	@Operation(summary = "Retrieve all invoices", description = "Method to retrieve invoices")
+	@ApiResponse(responseCode = "200", description = "Invoices recovered")
 	public ResponseEntity<Page<BillingResponse>> getAll(Pageable pageable) {
 		log.info("New GET request to Billing: getAll");
 		Page<Billing> billingsFound = billingService.getAll(pageable);
@@ -95,6 +111,8 @@ public class BillingController {
 	}
 
 	@GetMapping("/customer/{id}")
+	@Operation(summary = "Retrieve a customer's invoices", description = "Method to retrieve a customer's invoices")
+	@ApiResponse(responseCode = "200", description = "Invoices recovered")
 	public ResponseEntity<Page<BillingResponse>> getByCustomerId(@PathVariable Long id, Pageable pageable) {
 		log.info("New GET request to Billing: getByCustomerId");
 		Page<Billing> billingsFound = billingService.getByCustomerId(id, pageable);
@@ -109,6 +127,9 @@ public class BillingController {
 	}
 
 	@GetMapping("/state/{id}")
+	@Operation(summary = "Retrieve invoices across the state", description = "Method to recover "
+			+ "invoices by their state")
+	@ApiResponse(responseCode = "200", description = "Invoices recovered")
 	public ResponseEntity<Page<BillingResponse>> getByState(@PathVariable Long id, Pageable pageable) {
 		log.info("New GET request to Billing: getByState");
 		Page<Billing> billingsFound = billingService.getByState(id, pageable);
@@ -123,6 +144,9 @@ public class BillingController {
 	}
 
 	@GetMapping("/year")
+	@Operation(summary = "Retrieve one year's invoices", description = "Method to recover "
+			+ "invoices for a given year")
+	@ApiResponse(responseCode = "200", description = "Invoices recovered")
 	public ResponseEntity<Page<BillingResponse>> getByYear(@RequestParam Integer year, Pageable pageable) {
 		log.info("New GET request to Billing: getByYear");
 		Page<Billing> billingsFound = billingService.getByYear(year, pageable);
@@ -137,6 +161,8 @@ public class BillingController {
 	}
 
 	@GetMapping("/amount")
+	@Operation(summary = "Retrieve invoices by amount", description = "Method to retrieve a customer's invoices")
+	@ApiResponse(responseCode = "200", description = "Invoices recovered")
 	public ResponseEntity<Page<BillingResponse>> getByAmountBetween(@RequestParam Double from, Double to,
 			Pageable pageable) {
 		log.info("New GET request to Billing: getByYear");
@@ -152,6 +178,8 @@ public class BillingController {
 	}
 
 	@GetMapping("/date")
+	@Operation(summary = "Retrieve invoices by date", description = "Method to retrieve a customer's by its date")
+	@ApiResponse(responseCode = "200", description = "Invoices recovered")
 	public ResponseEntity<Page<BillingResponse>> getByDate(
 			@RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") Date date, Pageable pageable) {
 		log.info("New GET request to Billing: getByDate");
