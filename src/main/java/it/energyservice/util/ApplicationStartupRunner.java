@@ -11,7 +11,6 @@
 //
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.CommandLineRunner;
-//import org.springframework.security.crypto.bcrypt.BCrypt;
 //import org.springframework.stereotype.Component;
 //
 //import it.energyservice.model.Billing;
@@ -22,6 +21,8 @@
 //import it.energyservice.model.Role;
 //import it.energyservice.model.Roles;
 //import it.energyservice.model.User;
+//import it.energyservice.model.dto.converter.UserDtoToUser;
+//import it.energyservice.model.dto.user.UserDto;
 //import it.energyservice.security.service.RoleService;
 //import it.energyservice.security.service.UserService;
 //import it.energyservice.service.BillingService;
@@ -58,6 +59,9 @@
 //
 //	@Autowired
 //	private UserService userService;
+//	
+//	@Autowired
+//	private UserDtoToUser userConverter;
 //
 //	@Autowired
 //	private BillingStateService billingStateService;
@@ -158,25 +162,21 @@
 //	}
 //
 //	private void insertUsers() {
-//		Role admin = new Role();
-//		Role user = new Role();
-//		admin.setRoleName(Roles.ROLE_ADMIN);
-//		user.setRoleName(Roles.ROLE_USER);
-//
-//		User userAdmin = new User();
-//		userAdmin.setUsername("admin");
-//		userAdmin.setEmail("admin@admin.it");
-//		userAdmin.setPassword(BCrypt.hashpw("admin", BCrypt.gensalt()));
-//		userAdmin.getRoles().add(admin);
-//
-//		User userUser = new User();
-//		userUser.setUsername("user");
-//		userUser.setEmail("user@user.it");
-//		userUser.setPassword(BCrypt.hashpw("user", BCrypt.gensalt()));
-//		userUser.getRoles().add(user);
-//
-//		userService.save(userUser);
+//		UserDto userAdminDto = new UserDto();
+//		userAdminDto.setEmail("admin@admin.it");
+//		userAdminDto.setPassword("admin");
+//		userAdminDto.setUsername("admin");
+//		userAdminDto.getRoles().add("ROLE_ADMIN");
+//		User userAdmin = userConverter.convert(userAdminDto);
 //		userService.save(userAdmin);
+//		
+//		UserDto userUserDto = new UserDto();
+//		userUserDto.setEmail("user@user.it");
+//		userUserDto.setPassword("user");
+//		userUserDto.setUsername("user");
+//		userUserDto.getRoles().add("ROLE_USER");
+//		User userUser = userConverter.convert(userUserDto);
+//		userService.save(userUser);
 //	}
 //
 //	private void insertBillingState() {
