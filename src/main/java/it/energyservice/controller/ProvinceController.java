@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.energyservice.model.Province;
 import it.energyservice.service.ProvinceService;
@@ -31,6 +33,8 @@ public class ProvinceController {
 	@PostMapping
 	@PreAuthorize("hasRole('ADMIN')")
 	@SecurityRequirement(name = "bearerAuth")
+	@Operation(summary = "Save a province", description = "Method to save a province")
+	@ApiResponse(responseCode = "200", description = "Province saved")
 	public ResponseEntity<Province> save(@RequestBody Province province) {
 		log.info("New POST request to Province: save");
 		Province response = provinceService.save(province);
@@ -40,6 +44,8 @@ public class ProvinceController {
 	@PutMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
 	@SecurityRequirement(name = "bearerAuth")
+	@Operation(summary = "Update a province", description = "Method to update a province")
+	@ApiResponse(responseCode = "200", description = "Province updated")
 	public ResponseEntity<Province> update(@PathVariable Long id, @RequestBody Province province) {
 		log.info("New PUT request to Province: update");
 		Province response = provinceService.update(id, province);
@@ -49,6 +55,8 @@ public class ProvinceController {
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
 	@SecurityRequirement(name = "bearerAuth")
+	@Operation(summary = "Delete a province", description = "Method to delete a province")
+	@ApiResponse(responseCode = "200", description = "Province deleted")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Province: delete");
 		provinceService.delete(id);
@@ -56,6 +64,8 @@ public class ProvinceController {
 	}
 
 	@GetMapping("/{id}")
+	@Operation(summary = "Retrieve a province", description = "Method to Retrieve a province")
+	@ApiResponse(responseCode = "200", description = "Province Retrieved")
 	public ResponseEntity<Province> getById(@PathVariable Long id){
 		log.info("New GET request to Province: getById");
 		Province response = provinceService.findById(id);
@@ -63,6 +73,8 @@ public class ProvinceController {
 	}
 
 	@GetMapping
+	@Operation(summary = "Retrieve all provinces", description = "Method to Retrieve all provinces")
+	@ApiResponse(responseCode = "200", description = "Provinces Retrieved")
 	public ResponseEntity<Page<Province>> getAll(Pageable pageable) {
 		log.info("New GET request to Province: getAll");
 		Page<Province> response = provinceService.getAll(pageable);

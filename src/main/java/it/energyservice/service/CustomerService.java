@@ -77,7 +77,7 @@ public class CustomerService {
 		log.info("Recovering customer...");
 
 		if (provinceResult.isPresent()) {
-			log.info("Province '" + id + "' recovered");
+			log.info("Customer '" + id + "' recovered");
 			return provinceResult.get();
 		} else
 			throw new CustomerNotFoundException("No customers are present with id " + id);

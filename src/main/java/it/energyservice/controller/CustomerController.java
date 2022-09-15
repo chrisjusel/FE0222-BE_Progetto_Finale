@@ -60,10 +60,10 @@ public class CustomerController {
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
 	@SecurityRequirement(name = "bearerAuth")
-	public ResponseEntity<String> delete(@PathVariable Long id) {
+	public ResponseEntity<Object> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Customer: delete");
 		customerService.delete(id);
-		return new ResponseEntity<String>("Customer successfully deleted", HttpStatus.OK);
+		return new ResponseEntity<Object>(null, HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")

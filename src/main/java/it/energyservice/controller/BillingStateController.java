@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.energyservice.model.BillingState;
 import it.energyservice.service.BillingStateService;
@@ -31,6 +33,8 @@ public class BillingStateController {
 	@PostMapping
 	@PreAuthorize("hasRole('ADMIN')")
 	@SecurityRequirement(name = "bearerAuth")
+	@Operation(summary = "Save a billing state", description = "Method to save a billing state")
+	@ApiResponse(responseCode = "200", description = "Invoice saved")
 	public ResponseEntity<BillingState> save(@RequestBody BillingState request) {
 		log.info("New POST request to Billing state: save");
 		BillingState response = billingStateService.save(request);
@@ -40,6 +44,8 @@ public class BillingStateController {
 	@PutMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
 	@SecurityRequirement(name = "bearerAuth")
+	@Operation(summary = "Update a billing state", description = "Method to update a billing state")
+	@ApiResponse(responseCode = "200", description = "Invoice saved")
 	public ResponseEntity<BillingState> update(@PathVariable Long id, @RequestBody BillingState request) {
 		log.info("New PUT request to Billing state: update");
 		BillingState response = billingStateService.update(id, request);
@@ -49,6 +55,8 @@ public class BillingStateController {
 	@DeleteMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
 	@SecurityRequirement(name = "bearerAuth")
+	@Operation(summary = "Delete a billing state", description = "Method to delete a billing state")
+	@ApiResponse(responseCode = "200", description = "Invoice deleted")
 	public ResponseEntity<String> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Billing state: delete");
 		billingStateService.delete(id);
@@ -56,6 +64,8 @@ public class BillingStateController {
 	}
 
 	@GetMapping("/{id}")
+	@Operation(summary = "Retrieve a billing state by id", description = "Method to Retrieve a billing state by id")
+	@ApiResponse(responseCode = "200", description = "Billing state Retrieved")
 	public ResponseEntity<BillingState> getById(@PathVariable Long id) {
 		log.info("New GET request to Province: getById");
 		BillingState response = billingStateService.findById(id);
@@ -63,6 +73,8 @@ public class BillingStateController {
 	}
 
 	@GetMapping
+	@Operation(summary = "Retrieve all billing states", description = "Method to Retrieve all billing states")
+	@ApiResponse(responseCode = "200", description = "Billing states Retrieved")
 	public ResponseEntity<Page<BillingState>> getAll(Pageable pageable) {
 		log.info("New GET request to Province: getAll");
 		Page<BillingState> response = billingStateService.getAll(pageable);

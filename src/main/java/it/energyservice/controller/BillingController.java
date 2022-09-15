@@ -48,7 +48,7 @@ public class BillingController {
 
 	@PostMapping
 	@PreAuthorize("hasRole('ADMIN')")
-	@Operation(summary = "Save an invoice", description = "Method for saving an invoice")
+	@Operation(summary = "Save an invoice", description = "Method to save an invoice")
 	@ApiResponse(responseCode = "200", description = "Invoice saved")
 	@SecurityRequirement(name = "bearerAuth")
 	public ResponseEntity<BillingResponse> save(@RequestBody BillingRequest request) {
@@ -62,7 +62,7 @@ public class BillingController {
 	@PutMapping("/{id}")
 	@PreAuthorize("hasRole('ADMIN')")
 	@SecurityRequirement(name = "bearerAuth")
-	@Operation(summary = "Update an invoice", description = "Method for updating an invoice")
+	@Operation(summary = "Update an invoice", description = "Method to update an invoice")
 	@ApiResponse(responseCode = "200", description = "Updated invoice")
 	public ResponseEntity<BillingResponse> update(@PathVariable Long id, @RequestBody BillingRequest request) {
 		log.info("New PUT request to Billing: update");
@@ -77,10 +77,10 @@ public class BillingController {
 	@SecurityRequirement(name = "bearerAuth")
 	@Operation(summary = "Remove an invoice", description = "Method to remove an invoice")
 	@ApiResponse(responseCode = "200", description = "Invoice removed")
-	public ResponseEntity<String> delete(@PathVariable Long id) {
+	public ResponseEntity<Object> delete(@PathVariable Long id) {
 		log.info("New DELETE request to Billing: delete");
 		billingService.delete(id);
-		return new ResponseEntity<String>("Billing successfully deleted", HttpStatus.OK);
+		return new ResponseEntity<Object>(null, HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
