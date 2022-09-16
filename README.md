@@ -99,12 +99,12 @@ per astrarre la logica di business scritta in Java dalle operazioni da svolgere 
 - **Inserimento di un nuovo comune**
 
 ```
-	{
-    	"name": "Fiumicino",
-    	"province": {
-        	"name": "Roma"
-    	}
+{
+	"name": "Fiumicino",
+	"province": {
+		"name": "Roma"
 	}
+}
 ```
 
 - **Response**
@@ -178,6 +178,8 @@ per astrarre la logica di business scritta in Java dalle operazioni da svolgere 
 
 - **Recupoero di un cliente attraverso l'id**
   - /api/customers/{id-cliente}
+
+- **Response**
 
 ```
 {
