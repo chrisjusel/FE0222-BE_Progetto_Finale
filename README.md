@@ -5,7 +5,7 @@ Questo progetto didattico è finalizzato alla gestione dei dati di un CRM che ge
 - [Quadro generale](#Quadro-generale)
 - [Tecnologie utilizzate](#Tecnologie-utilizzate)
 - [Funzionalità](#Funzionalità)
-- [Utilizzo API - Esempi](#Utilizzo-API-Esempi)
+- [Utilizzo API-Esempi](#Utilizzo-API-Esempi)
 - [Risorse Aggiuntive](#Risorse-Aggiuntive)
 
 
