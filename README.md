@@ -91,7 +91,7 @@ per astrarre la logica di business scritta in Java dalle operazioni da svolgere 
 - Registrazione di un nuovo utente (con ruoli)
 - Login
 
-## Utilizzo API - Esempi
+## Utilizzo API-Esempi
 
 ### Metodi POST
 #### Comune
