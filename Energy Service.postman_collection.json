@@ -1,0 +1,1227 @@
+{
+	"info": {
+		"_postman_id": "ac00f847-c3ee-40dc-8ca2-55d261c9d7e6",
+		"name": "Energy Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21022289"
+	},
+	"item": [
+		{
+			"name": "Province",
+			"item": [
+				{
+					"name": "inserimento",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ROMA\",\r\n    \"sign\": \"RM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/provinces",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"provinces"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifica",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n    \"name\": \"FIUMICINO\",\r\n    \"sign\": \"RM\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/provinces/69",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"provinces",
+								"69"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/provinces/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"provinces",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/provinces",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"provinces"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comuni",
+			"item": [
+				{
+					"name": "inserimento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "X-TENANT-ID",
+								"value": "{{tenant}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FROSINONE\",\r\n    \"province\": {\r\n        \"name\": \"Roma\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/commons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"commons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifica",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Fiumicino\",\r\n    \"province\": {\r\n        \"name\": \"Roma\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/commons/2668",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"commons",
+								"2668"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rimozione",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/commons/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"commons",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/commons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"commons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "geyById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/commons/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"commons",
+								"4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Clienti",
+			"item": [
+				{
+					"name": "inserimento",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY2MzIzMjUwMSwiZXhwIjoxNjYzMzE4OTAxfQ.OREwk0xqBH0FGCRrRZF-ARtiqt9u2efHXZtPYNz11K1-1nWvEAt2IW5QHaUSuH1sGglVbMGz4RlE0MURU4_O6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY2MzA4NTEyMywiZXhwIjoxNjYzMTcxNTIzfQ.0I4op3MCPgqyNpNGiDhVHLkEXDeh5daScDfZpLrgvu0f2pP1rokxrp75fmxRsX3E6pcgKn964i_Er2VaruUz1Q",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"companyName\": \"Bruno-Romano SPA - TEST\",\r\n    \"customerType\": \"SRL\",\r\n    \"vatNumber\": \"14812266616\",\r\n    \"email\": \"rosalino.caruso@gmail.com\",\r\n    \"pec\": \"antonio.damico@gmail.com\",\r\n    \"phone\": \"+38 855 62 44 5685\",\r\n    \"contactName\": \"Sarita\",\r\n    \"contactSurname\": \"Serr\",\r\n    \"contactPhone\": \"380.260.3225\",\r\n    \"contactEmail\": \"armando.martinelli@hotmail.com\",\r\n    \"operatingSiteAddress\": {\r\n        \"street\": \"Contrada Gastone 4, Piano 4\",\r\n        \"civicNumber\": \"698\",\r\n        \"zip\": \"38615\",\r\n        \"locality\": \"Vania del friuli\",\r\n        \"common\": 1\r\n    },\r\n    \"legalSiteAddress\": {\r\n        \"street\": \"Strada Ricci 55, Appartamento 58\",\r\n        \"civicNumber\": \"925\",\r\n        \"zip\": \"65995\",\r\n        \"locality\": \"Ivonne umbro\",\r\n        \"common\": 2\r\n    },\r\n    \"insertionDate\": \"2020-06-01 08:11:01\",\r\n    \"lastContactDate\": \"2021-03-24 21:32:06\",\r\n    \"annualTurnover\": 23525.54\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifica",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"companyName\": \"Bruno-Romano SPA - TEST\",\r\n    \"customerType\": \"SRL\",\r\n    \"vatNumber\": \"14812266616\",\r\n    \"email\": \"rosalino.caruso@gmail.com\",\r\n    \"pec\": \"antonio.damico@gmail.com\",\r\n    \"phone\": \"+38 855 62 44 5685\",\r\n    \"contactName\": \"Sarita\",\r\n    \"contactSurname\": \"Serr\",\r\n    \"contactPhone\": \"380.260.3225\",\r\n    \"contactEmail\": \"armando.martinelli@hotmail.com\",\r\n    \"operatingSiteAddress\": {\r\n        \"id\": 12,\r\n        \"street\": \"Contrada Gastone 4, Piano 4\",\r\n        \"civicNumber\": \"798\",\r\n        \"zip\": \"38615\",\r\n        \"locality\": \"Vania del friuli\",\r\n        \"common\": 11\r\n    },\r\n    \"legalSiteAddress\": {\r\n        \"id\": 13,\r\n        \"street\": \"Strada Ricci 55, Appartamento 58\",\r\n        \"civicNumber\": \"832\",\r\n        \"zip\": \"65995\",\r\n        \"locality\": \"Ivonne umbro\",\r\n        \"common\": 10\r\n    },\r\n    \"insertionDate\": \"2019-06-01 08:11:01\",\r\n    \"lastContactDate\": \"2021-03-24 21:32:06\",\r\n    \"annualTurnover\": 23525.54\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "romozione",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY2MzIzMjUwMSwiZXhwIjoxNjYzMzE4OTAxfQ.OREwk0xqBH0FGCRrRZF-ARtiqt9u2efHXZtPYNz11K1-1nWvEAt2IW5QHaUSuH1sGglVbMGz4RlE0MURU4_O6Q",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByAnnualTurnoverBetween",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/annualturnover?from=1000&to=10000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"annualturnover"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "1000"
+								},
+								{
+									"key": "to",
+									"value": "10000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByInsertionDateBetween",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/insertiondate?from=2019-01-01&to=2023-01-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"insertiondate"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2019-01-01"
+								},
+								{
+									"key": "to",
+									"value": "2023-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByLastContactDate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/lastcontactdate?from=2019-01-01&to=2022-01-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"lastcontactdate"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "2019-01-01"
+								},
+								{
+									"key": "to",
+									"value": "2022-01-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByCompanyNameContaining",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/companyname?name=eba",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"companyname"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "eba"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orderByAnnualTurnover",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers?sort=annualTurnover,asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "annualTurnover,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orderByCompanyName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers?sort=companyName,asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "companyName,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orderByInsertionDate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers?sort=insertionDate,asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "insertionDate,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orderByLastContactDate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers?sort=lastContactDate,asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "lastContactDate,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orderByLegalSiteAddressProvince",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/customers?sort=legalSiteAddress_common_province_name,asc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							],
+							"query": [
+								{
+									"key": "sort",
+									"value": "legalSiteAddress_common_province_name,asc"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Indirizzi",
+			"item": [
+				{
+					"name": "modifica",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"street\" : \"Toledo\",\r\n    \"civicNumber\" : \"123\",\r\n    \"locality\" : \"Vomero\",\r\n    \"zip\" : \"80129\",\r\n    \"common\" : 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/addresses/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"addresses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/addresses/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"addresses",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/addresses/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"addresses",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Stati Fattura",
+			"item": [
+				{
+					"name": "inserimento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"IN ATTESA DI PAGAMENTO\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/billingstates/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billingstates",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifica",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"NON ANDATA A BUON FINE\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/billingstates/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billingstates",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rimozione",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/billingstates/5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billingstates",
+								"5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/billingstates/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billingstates",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/billingstates/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billingstates",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fatture",
+			"item": [
+				{
+					"name": "inserimento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\":\"2019-07-31 00:00:00\",\r\n    \"number\":0,\r\n    \"year\":2019,\r\n    \"amount\":900.16,\r\n    \"state\": \"NON PAGATA\",\r\n    \"customer\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/billings/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modifica",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"date\":\"2019-07-31T16:09:43.763+00:00\",\r\n    \"number\":152,\r\n    \"year\":2019,\r\n    \"amount\":1692.16,\r\n    \"state\": \"PAGATA\",\r\n    \"customer\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/billings/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billings",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "rimozione",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/billings/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billings",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/billings/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billings",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/billings/112",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billings",
+								"112"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByCustomerId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/billings/customer/8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billings",
+								"customer",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByState",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/fatture/billings/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"fatture",
+								"billings",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByYear",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/billings/year?year=2022",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billings",
+								"year"
+							],
+							"query": [
+								{
+									"key": "year",
+									"value": "2022"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByAmountBetween",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/billings/amount?from=1000&to=2000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billings",
+								"amount"
+							],
+							"query": [
+								{
+									"key": "from",
+									"value": "1000"
+								},
+								{
+									"key": "to",
+									"value": "2000"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getByDate",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/billings/date?date=2021-12-20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"billings",
+								"date"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2021-12-20"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "registerUser",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"admin\",\r\n    \"email\" : \"admin@admin.it\",\r\n    \"roles\": [\"ROLE_ADMIN\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"admin\",\r\n    \"password\" : \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{Token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTY2MzA4MDIxNCwiZXhwIjoxNjYzMTY2NjE0fQ.-s3f33r6mNYBhz3gaxK7UvfiZhT6IDHOIQkY1v0ayP6K_PK-bHxnIg-0-jvEeLhDuVeGTyDPN67TsFG0weNksA",
+			"type": "string"
+		}
+	]
+}

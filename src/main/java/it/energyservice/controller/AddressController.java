@@ -58,7 +58,7 @@ public class AddressController {
 	}
 
 	@GetMapping("/{id}")
-	@Operation(summary = "Retrieving an address", description = "Method to retrieve an address through the id")
+	@Operation(summary = "Retrieval an address", description = "Method to retrieve an address through the id")
 	@ApiResponse(responseCode = "200", description = "Address recovered")
 	public ResponseEntity<Address> getById(@PathVariable Long id) {
 		log.info("New GET request to Address: getById");
