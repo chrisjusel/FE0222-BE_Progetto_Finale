@@ -18,6 +18,7 @@ per astrarre la logica di business scritta in Java dalle operazioni da svolgere 
 - All'interno del progetto è stato adottato un sistema di gestione delle eccezioni ed il codice è stato testato con il framework di testing JUnit.
 - Ad ogni avvio dell'applicazione, di default, vengono ricaricati tutti i dati di test che vanno a popolare il database attraverso la lettura da file csv. Questo comportamento può essere cambiato nell'application.properties.
 - Per le operazioni di lettura è stata implementata la paginazione.
+- L'applicativo è stato rilasciato su Heroku.
 
 
 ## Tecnologie utilizzate
