@@ -6,8 +6,8 @@ This educational project is aimed at managing the data of a CRM that manages cus
 # Present content.
 - [Overview](#Overview)
 - [Technologies used](#Technologies-used)
-- [Features] (#Features)
-- [Examples of API use](#Examples-of-API-use)
+- [Features](#Features)
+- [API Usage-Examples](#API-Usage-Examples)
 - [Additional resources](#Additional-resources)
 
 ## Overview
