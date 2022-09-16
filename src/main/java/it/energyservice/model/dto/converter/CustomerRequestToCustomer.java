@@ -4,18 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 
-import it.energyservice.model.Address;
 import it.energyservice.model.Customer;
-import it.energyservice.model.dto.customer.AddressRequest;
 import it.energyservice.model.dto.customer.CustomerRequest;
-import it.energyservice.service.AddressService;
-import it.energyservice.service.CommonService;
 
 @Component
 public class CustomerRequestToCustomer implements Converter<CustomerRequest, Customer> {
-
-	@Autowired
-	private CommonService commonService;
 
 	@Autowired
 	private AddressRequestToAddress addressConverter;

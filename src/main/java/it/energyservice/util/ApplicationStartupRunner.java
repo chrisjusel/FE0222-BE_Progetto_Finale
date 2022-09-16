@@ -59,7 +59,7 @@ public class ApplicationStartupRunner implements CommandLineRunner {
 
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private UserDtoToUser userConverter;
 
@@ -169,7 +169,7 @@ public class ApplicationStartupRunner implements CommandLineRunner {
 		userAdminDto.getRoles().add("ROLE_ADMIN");
 		User userAdmin = userConverter.convert(userAdminDto);
 		userService.save(userAdmin);
-		
+
 		UserDto userUserDto = new UserDto();
 		userUserDto.setEmail("user@user.it");
 		userUserDto.setPassword("user");
