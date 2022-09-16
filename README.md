@@ -12,7 +12,7 @@ Questo progetto didattico è finalizzato alla gestione dei dati di un CRM che ge
 
 
 ## Quadro generale
-Questo applicativo è stata realizzato con Spring ed esponde metodi REST che permettono di effettuare le principali operazioni di lettura e scrittura dei dati.
+Questo applicativo è stata realizzato con Spring ed espone metodi REST che permettono di effettuare le principali operazioni di lettura e scrittura dei dati.
 - E' presente lo strato di persistenza su Database e viene sfruttato il framework JPA, in particolare attraverso l'ORM Hybernate,
 per astrarre la logica di business scritta in Java dalle operazioni da svolgere su qual si voglia DBMS sottostante.
 - Tutti i metodi che l'API espone sono documentati con Open-Api e Swagger.
