@@ -1,4 +1,5 @@
 # Energy Service
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/chrisjusel/FE0222-BE_Progetto_Finale/README-en.md)
 Questo progetto didattico è finalizzato alla gestione dei dati di un CRM che gestisce clienti e fatture.
 
 # Contenuti presenti
